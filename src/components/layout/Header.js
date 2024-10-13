@@ -1,12 +1,12 @@
 'use client';
-import {CartContext} from "@/components/AppContext";
+import { CartContext } from "@/components/AppContext";
 import Bars2 from "@/components/icons/Bars2";
 import ShoppingCart from "@/components/icons/ShoppingCart";
-import {signOut, useSession} from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import {useContext, useState} from "react";
+import { useContext, useState } from "react";
 
-function AuthLinks({status, userName}) {
+function AuthLinks({ status, userName }) {
   if (status === 'authenticated') {
     return (
       <>
@@ -38,7 +38,7 @@ export default function Header() {
   const status = session?.status;
   const userData = session.data?.user;
   let userName = userData?.name || userData?.email;
-  const {cartProducts} = useContext(CartContext);
+  const { cartProducts } = useContext(CartContext);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   if (userName && userName.includes(' ')) {
     userName = userName.split(' ')[0];
@@ -47,15 +47,15 @@ export default function Header() {
     <header>
       <div className="flex items-center md:hidden justify-between">
         <Link className="text-primary font-semibold text-2xl" href={'/'}>
-          ST PIZZA
+          TASTY PIZZA
         </Link>
         <div className="flex gap-8 items-center">
           <Link href={'/cart'} className="relative">
             <ShoppingCart />
             {cartProducts?.length > 0 && (
               <span className="absolute -top-2 -right-4 bg-primary text-white text-xs py-1 px-1 rounded-full leading-3">
-            {cartProducts.length}
-          </span>
+                {cartProducts.length}
+              </span>
             )}
           </Link>
           <button
@@ -79,7 +79,7 @@ export default function Header() {
       <div className="hidden md:flex items-center justify-between">
         <nav className="flex items-center gap-8 text-gray-500 font-semibold">
           <Link className="text-primary font-semibold text-2xl" href={'/'}>
-            ST PIZZA
+            TASTST PIZZA
           </Link>
           <Link href={'/'}>Home</Link>
           <Link href={'/menu'}>Menu</Link>
@@ -92,8 +92,8 @@ export default function Header() {
             <ShoppingCart />
             {cartProducts?.length > 0 && (
               <span className="absolute -top-2 -right-4 bg-primary text-white text-xs py-1 px-1 rounded-full leading-3">
-            {cartProducts.length}
-          </span>
+                {cartProducts.length}
+              </span>
             )}
           </Link>
         </nav>
